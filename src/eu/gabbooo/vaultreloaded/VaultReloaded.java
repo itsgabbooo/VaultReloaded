@@ -154,7 +154,7 @@ public class VaultReloaded extends JavaPlugin {
         });
 
         // Load up the Plugin metrics
-        Metrics metrics = new Metrics(this, 887);
+        Metrics metrics = new Metrics(this, 33792);
         findCustomData(metrics);
 
         log.info(String.format("Enabled Version %s", getDescription().getVersion()));
