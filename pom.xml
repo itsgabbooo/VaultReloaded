@@ -6,34 +6,33 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<bukkitVersion>1.13.1-R0.1-SNAPSHOT</bukkitVersion>
 		<mainClass>${project.groupId}.${project.artifactId}</mainClass>
-		<api.version>1.7</api.version>
 	</properties>
 
 	<!-- Project information -->
-	<groupId>net.milkbowl.vault</groupId>
-	<artifactId>Vault</artifactId>
-	<version>${api.version}.3</version>
-	<name>Vault</name>
+	<groupId>eu.gabbooo.vaultreloaded</groupId>
+	<artifactId>VaultReloaded</artifactId>
+	<version>1.0.0</version>
+	<name>VaultReloaded</name>
 	<url>https://dev.bukkit.org/projects/vault</url>
-	<description>Vault is a Chat, Permissions &amp; Economy API to allow plugins to more easily hook into these systems without needing to hook each individual system themselves.</description>
+	<description>VaultReloaded is a Chat, Permissions &amp; Economy API to allow plugins to more easily hook into these systems without needing to hook each individual system themselves.</description>
 
 
 
 	<!-- Organization -->
 	<organization>
-		<name>MilkBowl</name>
-		<url>https://github.com/MilkBowl/Vault</url>
+		<name>gabbooo</name>
+		<url>https://github.com/itsgabbooo/VaultReloaded</url>
 	</organization>
 
 	<scm>
-		<url>https://github.com/MilkBowl/Vault</url>
-		<connection>scm:git:git://github.com:MilkBowl/Vault.git</connection>
-		<developerConnection>scm:git:git@github.com:MilkBowl/Vault.git</developerConnection>
+		<url>https://github.com/itsgabbooo/VaultReloaded</url>
+		<connection>scm:git:git://github.com:itsgabbooo/VaultReloaded.git</connection>
+		<developerConnection>scm:git:git@github.com:itsgabbooo/VaultReloaded.git</developerConnection>
 	</scm>
 
 	<issueManagement>
 		<system>GitHub</system>
-		<url>https://github.com/MilkBowl/Vault/issues</url>
+		<url>https://github.com/itsgabbooo/VaultReloaded/issues</url>
 	</issueManagement>
 
 	<distributionManagement>
@@ -74,11 +73,6 @@
 			<groupId>org.bukkit</groupId>
 			<artifactId>bukkit</artifactId>
 			<version>${bukkitVersion}</version>
-		</dependency>
-		<dependency>
-			<groupId>net.milkbowl.vault</groupId>
-			<artifactId>VaultAPI</artifactId>
-			<version>${api.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.bstats</groupId>
@@ -269,14 +263,13 @@
 					<createDependencyReducedPom>false</createDependencyReducedPom>
 					<artifactSet>
 						<includes>
-							<include>net.milkbowl.vault:VaultAPI</include>
 							<include>org.bstats</include>
 						</includes>
 					</artifactSet>
 					<relocations>
 						<relocation>
 							<pattern>org.bstats</pattern>
-							<shadedPattern>net.milkbowl.vault.metrics</shadedPattern>
+							<shadedPattern>eu.gabbooo.vaultreloaded.metrics</shadedPattern>
 						</relocation>
 					</relocations>
 				</configuration>

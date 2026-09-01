@@ -22,7 +22,7 @@
 			<fileset dir="bin" includes="**/*" />
 			<fileset dir="javadoc" includes="**/*" />
 		</delete>
-		<delete file="Vault.jar" />
+		<delete file="VaultReloaded.jar" />
 		<mkdir dir="bin"/>
 	</target>
   
@@ -35,7 +35,7 @@
   
   <target name="compress" description="Compression target">
 	<echo>Compressing</echo>
-        <jar jarfile="Vault.jar" basedir="bin" includes="net/**/*, plugin.yml, props/*">
+        <jar jarfile="VaultReloaded.jar" basedir="bin" includes="eu/**/*, plugin.yml, props/*">
 		<manifest>
 			<attribute name="Built-By" value="${user.name}" />
 		</manifest>
@@ -44,12 +44,12 @@
   </target>
 	
   <target name="javadoc" description="Generate JavaDoc">
-  	<delete dir="/var/www/javadoc/vault" includes="**/*" failonerror="false" />
-	<javadoc packagenames="net.milkbowl.vault.economy,net.milkbowl.vault.permission,net.milkbowl.vault.chat,net.milkbowl.vault.item"
+  	<delete dir="/var/www/javadoc/vaultreloaded" includes="**/*" failonerror="false" />
+	<javadoc packagenames="eu.gabbooo.vaultreloaded.economy,eu.gabbooo.vaultreloaded.permission,eu.gabbooo.vaultreloaded.chat"
 			sourcepath="src"
-			destdir="/var/www/javadoc/vault"
+			destdir="/var/www/javadoc/vaultreloaded"
 			access="public"
-			windowtitle="Vault"
+			windowtitle="VaultReloaded"
 			verbose="false"
 			author="true"
 			version="true">
