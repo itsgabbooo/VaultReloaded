@@ -11,7 +11,7 @@
 	<!-- Project information -->
 	<groupId>eu.gabbooo.vaultreloaded</groupId>
 	<artifactId>VaultReloaded</artifactId>
-	<version>1.0.0</version>
+	<version>1.1.0</version>
 	<name>VaultReloaded</name>
 	<url>https://dev.bukkit.org/projects/vault</url>
 	<description>VaultReloaded is a Chat, Permissions &amp; Economy API to allow plugins to more easily hook into these systems without needing to hook each individual system themselves.</description>
@@ -66,6 +66,10 @@
 			<id>codemc-repo</id>
 			<url>https://repo.codemc.org/repository/maven-public</url>
 		</repository>
+		<repository>
+			<id>extendedclip-repo</id>
+			<url>https://repo.extendedclip.com/releases/</url>
+		</repository>
 	</repositories>
 
 	<dependencies>
@@ -73,6 +77,12 @@
 			<groupId>org.bukkit</groupId>
 			<artifactId>bukkit</artifactId>
 			<version>${bukkitVersion}</version>
+		</dependency>
+		<dependency>
+			<groupId>me.clip</groupId>
+			<artifactId>placeholderapi</artifactId>
+			<version>2.12.3</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>de.hydrox.bukkit</groupId>

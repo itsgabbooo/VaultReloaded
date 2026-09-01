@@ -4,8 +4,25 @@ All notable changes to this project are documented in this file.
 
 ## [Unreleased]
 
-### Changed
-- Update checker now queries the GitHub Releases of `itsgabbooo/VaultReloaded` instead of the original Vault CurseForge project — it no longer reports Vault's versions as updates for VaultReloaded
+## [1.1.0] - 2026-09-01
+
+### Added
+- Built-in **PlaceholderAPI expansion**: the classic Vault placeholders are now provided natively, without needing to install the Vault expansion from the PlaceholderAPI eCloud
+  - Registered under both identifiers: `%vaultreloaded_...%` (new) and `%vault_...%` (backwards compatibility, skipped when another vault expansion is already active)
+  - Economy: `%vaultreloaded_eco_balance%`, `..._balance_fixed%`, `..._balance_commas%`, `..._balance_formatted%`, `..._balance_<n>dp%`
+  - Permissions & Chat: `..._rank%`, `..._group%`, `..._ranks%`, `..._groups%`, `..._prefix%`, `..._suffix%`, `..._rankprefix%`, `..._ranksuffix%`, `..._rankprefix_<n>%`, `..._hasgroup_<group>%`, `..._inprimarygroup_<group>%`
+
+### Fixed
+- **Update checker**: it was querying the original Vault project on CurseForge and wrongly reported `Stable Version: 1.7.3 is out! You are still running version: 1.0.0` on every start — it now checks the GitHub Releases of `itsgabbooo/VaultReloaded` and only reports real VaultReloaded versions
+- **Placeholder parsing**: when no permission/chat provider is registered (e.g. only the built-in SuperPerms backup), some placeholders (`rank`, `prefix`, ...) could throw `UnsupportedOperationException` and abort the whole placeholder resolution — requests are now exception-safe and return an empty value instead of crashing
+
+### Tasks & Async
+- The update check runs as a **scheduled async task** (every 30 minutes, after server start) — it never blocks the main thread or server startup
+- bStats metrics are submitted **in the background** by the bundled single-file `Metrics` class, using its own scheduled executor
+- The PlaceholderAPI expansion **re-resolves the registered providers on every request** on the calling thread, so economy/chat/permission plugins loaded after VaultReloaded are picked up without a server restart
+
+### Dependencies
+- Added `PlaceholderAPI` as a compile-time provided dependency (`plugin.yml` soft-depend) — the plugin still loads and works on servers without PlaceholderAPI
 
 ## [1.0.0] - 2026-09-01
 

@@ -56,6 +56,8 @@ import eu.gabbooo.vaultreloaded.permission.plugins.Permission_rscPermissions;
 import eu.gabbooo.vaultreloaded.permission.plugins.Permission_KPerms;
 
 import eu.gabbooo.vaultreloaded.metrics.Metrics;
+import eu.gabbooo.vaultreloaded.placeholder.VaultReloadedExpansion;
+import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
@@ -109,6 +111,8 @@ public class VaultReloaded extends JavaPlugin {
         // Load VaultReloaded Addons
         loadPermission();
         loadChat();
+        // Register PlaceholderAPI expansions when PlaceholderAPI is present
+        setupPlaceholders();
 
         getCommand("vaultreloaded-info").setExecutor(this);
         getCommand("vaultreloaded-convert").setExecutor(this);
@@ -158,6 +162,31 @@ public class VaultReloaded extends JavaPlugin {
         findCustomData(metrics);
 
         log.info(String.format("Enabled Version %s", getDescription().getVersion()));
+    }
+
+    /**
+     * Registers the built-in PlaceholderAPI expansions when PlaceholderAPI is installed.
+     * <p>
+     * Registers both the <code>vaultreloaded</code> and (for backwards compatibility)
+     * the <code>vault</code> identifier, unless another vault expansion is already active.
+     */
+    private void setupPlaceholders() {
+        Plugin papi = getServer().getPluginManager().getPlugin("PlaceholderAPI");
+        if (papi == null) {
+            return;
+        }
+        try {
+            boolean vaultreloaded = new VaultReloadedExpansion("vaultreloaded").register();
+            log.info("PlaceholderAPI found: 'vaultreloaded' expansion " + (vaultreloaded ? "registered" : "NOT registered"));
+            if (PlaceholderAPI.isRegistered("vault")) {
+                log.info("PlaceholderAPI found: a 'vault' expansion is already active, skipping compatibility expansion");
+            } else {
+                boolean vault = new VaultReloadedExpansion("vault").register();
+                log.info("PlaceholderAPI found: 'vault' compatibility expansion " + (vault ? "registered" : "NOT registered"));
+            }
+        } catch (Throwable t) {
+            log.warning("Failed to register PlaceholderAPI expansion: " + t.getMessage());
+        }
     }
 
     /**
