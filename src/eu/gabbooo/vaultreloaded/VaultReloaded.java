@@ -55,8 +55,7 @@ import eu.gabbooo.vaultreloaded.permission.plugins.Permission_TotalPermissions;
 import eu.gabbooo.vaultreloaded.permission.plugins.Permission_rscPermissions;
 import eu.gabbooo.vaultreloaded.permission.plugins.Permission_KPerms;
 
-import org.bstats.bukkit.Metrics;
-import org.bstats.charts.SimplePie;
+import eu.gabbooo.vaultreloaded.metrics.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
@@ -471,7 +470,7 @@ public class VaultReloaded extends JavaPlugin {
             econ = rspEcon.getProvider();
         }
         final String econName = econ != null ? econ.getName() : "No Economy";
-        metrics.addCustomChart(new SimplePie("economy", new Callable<String>() {
+        metrics.addCustomChart(new Metrics.SimplePie("economy", new Callable<String>() {
             @Override
             public String call() {
                 return econName;
@@ -480,7 +479,7 @@ public class VaultReloaded extends JavaPlugin {
 
         // Create our Permission Graph and Add our permission Plotters
         final String permName = Bukkit.getServer().getServicesManager().getRegistration(Permission.class).getProvider().getName();
-        metrics.addCustomChart(new SimplePie("permission", new Callable<String>() {
+        metrics.addCustomChart(new Metrics.SimplePie("permission", new Callable<String>() {
             @Override
             public String call() {
                 return permName;
@@ -494,7 +493,7 @@ public class VaultReloaded extends JavaPlugin {
             chat = rspChat.getProvider();
         }
         final String chatName = chat != null ? chat.getName() : "No Chat";
-        metrics.addCustomChart(new SimplePie("chat", new Callable<String>() {
+        metrics.addCustomChart(new Metrics.SimplePie("chat", new Callable<String>() {
             @Override
             public String call() {
                 return chatName;
