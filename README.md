@@ -1,6 +1,10 @@
 # VaultReloaded
 
+[![Build Status](https://app.travis-ci.com/itsgabbooo/VaultReloaded.svg?branch=master)](https://app.travis-ci.com/itsgabbooo/VaultReloaded)
+
 **VaultReloaded** is a fork of [Vault](https://github.com/MilkBowl/Vault) by **ItsGabbooo**.
+
+Repository: [github.com/itsgabbooo/VaultReloaded](https://github.com/itsgabbooo/VaultReloaded)
 
 It is a Chat, Permissions & Economy API for Bukkit/Spigot/Paper servers that allows plugins to hook into these systems through a single, unified interface — without each plugin needing to support every permissions, chat or economy plugin individually.
 
